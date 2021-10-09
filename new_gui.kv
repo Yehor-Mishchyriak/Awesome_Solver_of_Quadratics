@@ -1,0 +1,741 @@
+#:import Snackbar kivymd.uix.snackbar.Snackbar
+#:import Clipboard kivy.core.clipboard.Clipboard
+
+<Solve_Screen_Button@MDRoundFlatButton>
+    font_size: app.p_x * 38
+    size_hint: (0.2, 0.07)
+    elevation: 15
+    halign: 'Center'
+
+<Image_Box@BoxLayout>
+
+<Amazing_Button@MagicBehavior+MDIconButton>
+    on_release: self.wobble()
+
+
+WindowManager:
+    HomeScreen:
+    SolvingScreen:
+    SettingsScreen:
+    SupportScreen:
+    HelpScreen
+
+
+<HomeScreen>:
+    name: 'home'
+
+    Image:
+        id: background_image_home_screen
+        source: 'Light_theme.png'
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, root.height
+
+    MDToolbar:
+        id: title
+        markup: True
+        anchor_title: 'center'
+        title: '[font=Youth Touch][size=72]The Best Solver of Quadratics[/size][/font]'
+        elevation: 15
+        pos_hint: {'center_x': 0.5, 'center_y': .96}
+        md_bg_color: 0, .47, .42, 1
+
+    MDRoundFlatIconButton:
+        id: solver_menu_button
+        theme_text_color: "Custom"
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 54
+        pos_hint: {'center_x': 0.5, 'center_y': 0.80}
+        size_hint: (0.8, 0.1)
+        elevation: 15
+        text: '[font=Freestyle Script]Equation-Solver[/font]'
+        icon: 'calculator-variant-outline'
+        on_release:
+            app.root.current = 'solution'
+            root.manager.transition.direction = 'up'
+
+    MDRoundFlatIconButton:
+        id: settings_menu_button
+        theme_text_color: "Custom"
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 58
+        pos_hint: {'center_x': 0.5, 'center_y': 0.63}
+        size_hint: (0.8, 0.1)
+        elevation: 15
+        text: '[font=Freestyle Script]Settings[/font]'
+        icon: 'application-settings'
+        on_release:
+            app.root.current = 'settings'
+            root.manager.transition.direction = 'up'
+
+    MDRoundFlatIconButton:
+        id: support_menu_button
+        theme_text_color: "Custom"
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 58
+        pos_hint: {'center_x': 0.5, 'center_y': 0.46}
+        size_hint: (0.8, 0.1)
+        elevation: 15
+        text: '[font=Freestyle Script]Support[/font]'
+        icon: 'thumb-up-outline'
+        on_release:
+            app.root.current = 'support'
+            root.manager.transition.direction = 'up'
+
+    MDRoundFlatIconButton:
+        id: help_menu_button
+        theme_text_color: "Custom"
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 58
+        pos_hint: {'center_x': 0.5, 'center_y': 0.29}
+        size_hint: (0.8, 0.1)
+        elevation: 15
+        text: '[font=Freestyle Script]Help[/font]'
+        icon: 'help-circle-outline'
+        on_release:
+            app.root.current = 'help'
+            root.manager.transition.direction = 'up'
+
+    MDRoundFlatIconButton:
+        id: exit_menu_button
+        theme_text_color: "Custom"
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 58
+        pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+        size_hint: (0.8, 0.1)
+        elevation: 15
+        text: '[font=Freestyle Script]Exit[/font]'
+        icon: 'exit-run'
+        on_release:
+            app.show_alert()
+
+
+
+<SolvingScreen>:
+    name: 'solution'
+
+    Image:
+        id: background_image_solving_screen
+        source: 'Light_theme.png'
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, root.height
+
+    # INPUT
+    MDTextField:
+        id: input_equation
+        mode: 'fill'
+        fill_color_normal: .68, .68, .68, 1
+        fill_color_focus: 1, 1, 1, 1
+        hint_text: 'Enter an equation'
+        font_name: 'Consolas'
+        font_size: app.p_x * 20
+        cursor_blink: False
+        allow_copy: True
+        auto_indent: True
+        line_anim: True
+        color_mode: 'custom'
+        # ----------color properties: ----------
+        line_color_focus: 0, 0, 0, 1
+        line_color_normal: 0, 0, 0, 1
+        text_color_focus: 0, 0, 0, 1
+        text_color_normal: 0, 0, 0, 1
+        hint_text_color_normal: 0, 0, 0, 1
+        hint_text_color_focus: 0, 0, 0, 1
+        # --------------------------------------
+        size_hint: (0.9, 0.09)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+
+    Solve_Screen_Button:
+        id: solve_button
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.14, 'center_y': 0.8}
+        text: '[font=Freestyle Script]Solve[/font]'
+        on_release: root.solve()
+
+    MDRoundFlatButton:
+        id: delete_button
+        font_size: app.p_x * 38
+        size_hint: (0.2, 0.07)
+        elevation: 15
+        halign: 'Center'
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.38, 'center_y': 0.8}
+        text: '[font=Freestyle Script]Delete[/font]'
+        on_release: root.delete()
+
+    Solve_Screen_Button:
+        id: power_button
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.62, 'center_y': 0.8}
+        text: '()²'
+        on_release: root.insert_2nd_power()
+
+    Solve_Screen_Button:
+        id: x_button
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.86, 'center_y': 0.8}
+        text: 'X'
+        on_release: root.insert_x()
+
+    # OUTPUT
+    MDCard:
+        id: solution_output_card
+        orientation: 'vertical'
+        padding: '8dp'
+        size_hint: 0.9, 0.6
+        pos_hint: {'center_x': .5, 'center_y': .43}
+        md_bg_color: .68, .68, .68, 1
+        elevation: 30
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            MDLabel:
+                id: solution_output
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                font_size: app.p_x * 20
+                theme_text_color: 'Custom'
+                font_name: 'Consolas'
+                text_color: 0, .47, .42, 1
+                padding: 10, 10
+                text: 'Solution will be printed here :)'
+
+    MDRoundFlatIconButton:
+        id: home_button_solving_screen
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 40
+        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        elevation: 15
+        halign: "center"
+        text: '[font=Freestyle Script]Home[/font]'
+        icon: 'home-circle-outline'
+        on_release:
+            app.root.current = 'home'
+            root.manager.transition.direction = 'down'
+
+
+<SettingsScreen>:
+    name: 'settings'
+
+    Image:
+        id: background_image_settings_screen
+        source: 'Light_theme.png'
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, root.height
+
+    MDLabel:
+        id: lang_label
+        markup: True
+        font_size: app.p_x * 60
+        theme_text_color: 'Custom'
+        text_color: 0, .47, .42, 1
+        text: '[font=Consolas]Language:[/font]'
+        pos_hint: {'center_x': 0.55, 'center_y': 0.95}
+
+    MDLabel:
+        id: rus_lang_label
+        markup: True
+        font_size: app.p_x * 54
+        theme_text_color: 'Custom'
+        text_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.55, 'center_y': 0.85}
+        text: '[font=IBM Plex Sans]Русский[/font]'
+
+    MDLabel:
+        id: eng_lang_label
+        markup: True
+        font_size: app.p_x * 54
+        theme_text_color: 'Custom'
+        text_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.55, 'center_y': 0.75}
+        text: '[font=IBM Plex Sans]English[/font]'
+
+    Amazing_Button:
+        id: rus_lang_button
+        icon: 'checkbox-blank-circle-outline'
+        theme_text_color: 'Custom'
+        text_color: app.theme_cls.primary_color
+        user_font_size: app.p_x * 60
+        pos_hint: {'center_x': 0.77, 'center_y': 0.85}
+        on_release: root.russian_language()
+
+    Amazing_Button:
+        id: eng_lang_button
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: app.theme_cls.primary_color
+        user_font_size: app.p_x * 60
+        pos_hint: {'center_x': 0.77, 'center_y': 0.75}
+        on_release: root.english_language()
+
+    MDRoundFlatIconButton:
+        id: home_button_settings_screen
+        text_color: 0, .47, .42, 1
+        line_color: 0, .47, .42, 1
+        icon_color: 0, .47, .42, 1
+        font_size: app.p_x * 40
+        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        elevation: 15
+        halign: "center"
+        text: '[font=Freestyle Script]Home[/font]'
+        icon: 'home-circle-outline'
+        on_release:
+            app.root.current = 'home'
+            root.manager.transition.direction = 'down'
+
+    MDLabel:
+        id: theme_label
+        markup: True
+        font_size: app.p_x * 54
+        theme_text_color: 'Custom'
+        text_color: 0, .47, .42, 1
+        pos_hint: {'center_x': 0.55, 'center_y': 0.6}
+        text: '[font=IBM Plex Sans]Theme:[/font]'
+
+    # =======================================================
+
+    # The left card
+    # The left layout
+    Amazing_Button:
+        id: reddish_accent
+        pos_hint: {'center_x': 0.1, 'center_y': 0.5}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .85, .2, .1, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_reddish_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    Amazing_Button:
+        id: orange_accent
+        pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .93, .54, .04, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_orange_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    Amazing_Button:
+        id: yellowish_accent
+        pos_hint: {'center_x': 0.1, 'center_y': 0.4}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .93, .81, .02, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_yellowish_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    Amazing_Button:
+        id: greenish_accent
+        pos_hint: {'center_x': 0.3, 'center_y': 0.4}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .02, .9, .18, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_greenish_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    Amazing_Button:
+        id: bluish_accent
+        pos_hint: {'center_x': 0.1, 'center_y': 0.3}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: 0, .47, .42, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_malachite_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    Amazing_Button:
+        id: purple_accent
+        pos_hint: {'center_x': 0.3, 'center_y': 0.3}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .57, .02, .72, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_purple_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+
+    Amazing_Button:
+        id: space_accent
+        pos_hint: {'center_x': 0.1, 'center_y': 0.2}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .7, .65, .82, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_space_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    Amazing_Button:
+        id: dark_blue_accent
+        pos_hint: {'center_x': 0.3, 'center_y': 0.2}
+        icon: 'checkbox-blank-circle'
+        theme_text_color: 'Custom'
+        text_color: .02, .31, .79, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_dark_blue_accent()
+            Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
+
+    # =======================================================
+
+    # The right card
+    # The left layout
+    Amazing_Button:
+        id: light_background
+        pos_hint: {'center_x': 0.7, 'center_y': 0.5}
+        icon: 'white-balance-sunny'
+        theme_text_color: 'Custom'
+        text_color: .95, .89, .47, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_light_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    Amazing_Button:
+        id: dark_background
+        pos_hint: {'center_x': 0.9, 'center_y': 0.5}
+        icon: 'moon-waning-crescent'
+        theme_text_color: 'Custom'
+        text_color: .95, .89, .47, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_dark_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    Amazing_Button:
+        id: orange_background
+        pos_hint: {'center_x': 0.7, 'center_y': 0.4}
+        icon: 'invert-colors'
+        theme_text_color: 'Custom'
+        text_color: .8, .53, .15, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_gradient_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    Amazing_Button:
+        id: ruby_background
+        pos_hint: {'center_x': 0.7, 'center_y': 0.2}
+        icon: 'square'
+        theme_text_color: 'Custom'
+        text_color: .78, .07, .17, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_ruby_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    # The right layout
+    Amazing_Button:
+        id: raspberry_background
+        pos_hint: {'center_x': 0.9, 'center_y': 0.2}
+        icon: 'square'
+        theme_text_color: 'Custom'
+        text_color: .81, .24, .35, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_raspberry_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    Amazing_Button:
+        id: purple_background
+        pos_hint: {'center_x': 0.9, 'center_y': 0.3}
+        icon: 'square'
+        theme_text_color: 'Custom'
+        text_color: .55, .13, .71, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_purple_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    Amazing_Button:
+        id: sky_blue_background
+        pos_hint: {'center_x': 0.9, 'center_y': 0.4}
+        icon: 'square'
+        theme_text_color: 'Custom'
+        text_color: 0, .69, .71, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_sky_blue_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+
+    Amazing_Button:
+        id: Darkblue_background
+        pos_hint: {'center_x': 0.7, 'center_y': 0.3}
+        icon: 'square'
+        theme_text_color: 'Custom'
+        text_color: .02, .26, .67, 1
+        user_font_size: app.p_x * 54
+        on_release:
+            root.set_dark_blue_bg()
+            Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
+    # =======================================================
+
+<SupportScreen>:
+    name: 'support'
+
+    Image:
+        id: background_image_support_screen
+        source: 'Light_theme.png'
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, root.height
+
+    MDCard:
+        id: support_screen_card
+        padding: 5
+        spacing: 2
+        orientation: 'vertical'
+        padding: '8dp'
+        size_hint: 0.9, 0.6
+        pos_hint: {'center_x': .5, 'center_y': .68}
+        md_bg_color: .68, .68, .68, 1
+        elevation: 15
+
+        MDLabel:
+            id: support_card_label1
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]"The Best Solver of quadratics",[/font]'
+
+        MDLabel:
+            id: support_card_label2
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]although being the best, is still absolutely free and contains no advertisements.[/font]'
+
+        MDLabel:
+            id: support_card_label3
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]Consequently,[/font]'
+
+        MDLabel:
+            id: support_card_label4
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]I\'d like to ask you to support the project.[/font]'
+
+        MDLabel:
+            id: support_card_label5
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]It is up to you: how exactly you support this app.[/font]'
+
+        MDLabel:
+            id: support_card_label6
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]There are several ways to do it,[/font]'
+
+        MDLabel:
+            id: support_card_label7
+            markup: True
+            font_size: app.p_x * 22
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]all of them are equally good, and there is no shame in combing them.[/font]'
+
+    MDLabel:
+        id: support_card_label8
+        pos_hint: {'center_x': .51, 'center_y': .33}
+        markup: True
+        font_size: app.p_x * 18
+        theme_text_color: 'Custom'
+        text_color: 0, .61, .55, 1
+        text: '[font=Consolas]The first way - assist financially:[/font]'
+
+    MDLabel:
+        id: support_card_label9
+        pos_hint: {'center_x': .51, 'center_y': .28}
+        markup: True
+        font_size: app.p_x * 18
+        theme_text_color: 'Custom'
+        text_color: 0, .61, .55, 1
+        text: '[font=Consolas]4441-1144-2615-3555 (Visa)[/font]'
+
+    MDLabel:
+        id: support_card_label10
+        pos_hint: {'center_x': .51, 'center_y': .22}
+        markup: True
+        font_size: app.p_x * 18
+        theme_text_color: 'Custom'
+        text_color: 0, .61, .55, 1
+        text: '[font=Consolas]The second way - tell your friends about it[/font]'
+
+    MDLabel:
+        id: support_card_label11
+        pos_hint: {'center_x': .51, 'center_y': .17}
+        markup: True
+        font_size: app.p_x * 18
+        theme_text_color: 'Custom'
+        text_color: 0, .61, .55, 1
+        text: '[font=Consolas]The third way - set 5* in Play Market[/font]'
+
+    Amazing_Button:
+        id: copy_button
+        pos_hint: {'center_x': .7, 'center_y': .28}
+        icon: 'content-copy'
+        theme_text_color: 'Custom'
+        text_color: 0, .61, .55, 1
+        user_font_size: app.p_x * 44
+        on_release:
+            self.text = Clipboard.paste()
+            Clipboard.copy('4441114426153555')
+            Snackbar(text="[color=#ddbb34]Card number was copied![/color]").open()
+
+    MDRoundFlatIconButton:
+        id: home_button_support_screen
+        text_color: 0, .61, .55, 1
+        line_color: 0, .61, .55, 1
+        icon_color: 0, .61, .55, 1
+        font_size: app.p_x * 40
+        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        elevation: 15
+        halign: "center"
+        text: '[font=Freestyle Script]Home[/font]'
+        icon: 'home-circle-outline'
+        on_release:
+            app.root.current = 'home'
+            root.manager.transition.direction = 'down'
+
+
+
+<HelpScreen>:
+    name: 'help'
+
+    Image:
+        id: background_image_help_screen
+        source: 'Light_theme.png'
+        keep_ratio: False
+        allow_stretch: True
+        size: root.width, root.height
+
+    MDCard:
+        id: help_screen_card
+        padding: 5
+        spacing: 2
+        orientation: 'vertical'
+        padding: '8dp'
+        size_hint: 0.9, 0.6
+        pos_hint: {'center_x': .5, 'center_y': .68}
+        md_bg_color: .68, .68, .68, 1
+        elevation: 15
+
+        MDLabel:
+            id: help_card_label1
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]Don\'t know how to use the app?[/font]'
+
+        MDLabel:
+            id: help_card_label2
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]No problem, that\'s not complicated at all![/font]'
+
+        MDLabel:
+            id: help_card_label3
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]1) Click \"Equation-Solver\" button.[/font]'
+
+        MDLabel:
+            id: help_card_label4
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]2) Enter a quadratic equation belonging to one of the following types:[/font]'
+
+        MDLabel:
+            id: help_card_label5
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]3) ax²=0; ax²+c=0; ax²+bx=0; ax²+bx+c=0.[/font]'
+
+        MDLabel:
+            id: help_card_label6
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]4) Position of coefficients doesn\'t matter.[/font]'
+
+        MDLabel:
+            id: help_card_label7
+            markup: True
+            font_size: app.p_x * 20
+            theme_text_color: 'Custom'
+            text_color: 0, .61, .55, 1
+            text: '[font=Consolas]5) Keep in mind that an equation should contain at least one variable (f.e. x, y, t, etc.) and only one "²".[/font]'
+
+    MDLabel:
+        id: help_label8
+        pos_hint: {'center_x': .55, 'center_y': .3}
+        markup: True
+        font_size: app.p_x * 55
+        theme_text_color: 'Custom'
+        text_color: 0, .61, .55, 1
+        text: '[font=IBM Plex Sans]Enjoy![/font]'
+
+    MDRoundFlatIconButton:
+        id: home_button_help_screen
+        font_size: app.p_x * 40
+        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        elevation: 15
+        halign: "center"
+        text: '[font=Freestyle Script]Home[/font]'
+        icon: 'home-circle-outline'
+        on_release:
+            app.root.current = 'home'
+            root.manager.transition.direction = 'down'
