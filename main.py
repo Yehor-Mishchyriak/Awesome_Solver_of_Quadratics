@@ -815,9 +815,9 @@ class SettingsScreen(MDScreen):
             home_button.text = '[font=Freestyle Script]Домой[/font]'
         self.buttons_without_icon[0].text = '[font=Freestyle Script]Решить[/font]'
         self.buttons_without_icon[1].text = '[font=Freestyle Script]Удалить[/font]'
-        self.buttons_without_icon[1].font_size = (Window.width / 450) * 34
+        self.buttons_without_icon[1].font_size = QES.resolution_coefficient * 34
         self.buttons_with_icon[0].text = '[font=Freestyle Script]Решатель уравнений[/font]'
-        self.buttons_with_icon[0].font_size = (Window.width / 450) * 48
+        self.buttons_with_icon[0].font_size = QES.resolution_coefficient * 46
         self.buttons_with_icon[1].text = '[font=Freestyle Script]Настройки[/font]'
         self.buttons_with_icon[2].text = '[font=Freestyle Script]Поддержка[/font]'
         self.buttons_with_icon[3].text = '[font=Freestyle Script]Помощь[/font]'
@@ -848,7 +848,7 @@ class SettingsScreen(MDScreen):
         self.labels[20].text = '[font=Consolas]4) Позиция коэффициентов не имеет значения.[/font]'
         self.labels[21].text = '[font=Consolas]5) Помните, что уравнение должно содержать как миниму одну переменную (т.е. x, y, t и т.д.) и только одну "²".[/font]'
         self.labels[22].text = '[font=IBM Plex Sans]Наслаждайтесь![/font]'
-        self.labels[22].font_size = (Window.width / 450) * 40
+        self.labels[22].font_size = QES.resolution_coefficient * 40
         self.data_input.hint_text = 'Введите уравнение'
 
         if state_of_the_output == '<BLANK>':
@@ -868,9 +868,9 @@ class SettingsScreen(MDScreen):
             home_button.text = '[font=Freestyle Script]Home[/font]'
         self.buttons_without_icon[0].text = '[font=Freestyle Script]Solve[/font]'
         self.buttons_without_icon[1].text = '[font=Freestyle Script]Delete[/font]'
-        self.buttons_without_icon[1].font_size = (Window.width / 450) * 38
+        self.buttons_without_icon[1].font_size = QES.resolution_coefficient * 38
         self.buttons_with_icon[0].text = '[font=Freestyle Script]Equation-Solver[/font]'
-        self.buttons_with_icon[0].font_size = (Window.width / 450) * 54
+        self.buttons_with_icon[0].font_size = QES.resolution_coefficient * 54
         self.buttons_with_icon[1].text = '[font=Freestyle Script]Settings[/font]'
         self.buttons_with_icon[2].text = '[font=Freestyle Script]Support[/font]'
         self.buttons_with_icon[3].text = '[font=Freestyle Script]Help[/font]'
@@ -901,7 +901,7 @@ class SettingsScreen(MDScreen):
         self.labels[20].text = '[font=Consolas]4) Position of coefficients doesn\'t matter.[/font]'
         self.labels[21].text = '[font=Consolas]5) Keep in mind that an equation should contain at least one variable (f.e. x, y, t, etc.) and only one "²".[/font]'
         self.labels[22].text = '[font=IBM Plex Sans]Enjoy![/font]'
-        self.labels[22].font_size = (Window.width / 450) * 55
+        self.labels[22].font_size = QES.resolution_coefficient * 55
         self.data_input.hint_text = 'Enter an equation'
         if state_of_the_output == '<BLANK>':
             self.data_output.text = 'Solution will be printed here :)'
@@ -1033,8 +1033,8 @@ Interface = 'new_gui.kv'
 class QES(MDApp):
 
     have_been_popped = None
-    # resolution coefficient
-    p_x = (Window.width * Window.height) / (450 * 800)
+    # resolution coefficient: Area of CURRENT device's screen / Area of INITIAL device's screen
+    resolution_coefficient = Window.width / 450
     @staticmethod
     def close_application(obj):
         # closing application

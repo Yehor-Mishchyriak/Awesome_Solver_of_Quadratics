@@ -2,7 +2,7 @@
 #:import Clipboard kivy.core.clipboard.Clipboard
 
 <Solve_Screen_Button@MDRoundFlatButton>
-    font_size: app.p_x * 38
+    font_size: app.resolution_coefficient * 38
     size_hint: (0.2, 0.07)
     elevation: 15
     halign: 'Center'
@@ -46,7 +46,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 54
+        font_size: app.resolution_coefficient * 54
         pos_hint: {'center_x': 0.5, 'center_y': 0.80}
         size_hint: (0.8, 0.1)
         elevation: 15
@@ -62,7 +62,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 58
+        font_size: app.resolution_coefficient * 58
         pos_hint: {'center_x': 0.5, 'center_y': 0.63}
         size_hint: (0.8, 0.1)
         elevation: 15
@@ -78,7 +78,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 58
+        font_size: app.resolution_coefficient * 58
         pos_hint: {'center_x': 0.5, 'center_y': 0.46}
         size_hint: (0.8, 0.1)
         elevation: 15
@@ -94,7 +94,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 58
+        font_size: app.resolution_coefficient * 58
         pos_hint: {'center_x': 0.5, 'center_y': 0.29}
         size_hint: (0.8, 0.1)
         elevation: 15
@@ -110,7 +110,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 58
+        font_size: app.resolution_coefficient * 58
         pos_hint: {'center_x': 0.5, 'center_y': 0.12}
         size_hint: (0.8, 0.1)
         elevation: 15
@@ -139,7 +139,7 @@ WindowManager:
         fill_color_focus: 1, 1, 1, 1
         hint_text: 'Enter an equation'
         font_name: 'Consolas'
-        font_size: app.p_x * 20
+        font_size: app.resolution_coefficient * 20
         cursor_blink: False
         allow_copy: True
         auto_indent: True
@@ -166,7 +166,7 @@ WindowManager:
 
     MDRoundFlatButton:
         id: delete_button
-        font_size: app.p_x * 38
+        font_size: app.resolution_coefficient * 38
         size_hint: (0.2, 0.07)
         elevation: 15
         halign: 'Center'
@@ -211,7 +211,7 @@ WindowManager:
                 size_hint_y: None
                 height: self.texture_size[1]
                 text_size: self.width, None
-                font_size: app.p_x * 20
+                font_size: app.resolution_coefficient * 20
                 theme_text_color: 'Custom'
                 font_name: 'Consolas'
                 text_color: 0, .47, .42, 1
@@ -223,7 +223,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 40
+        font_size: app.resolution_coefficient * 40
         pos_hint: {'center_x': 0.5, 'center_y': 0.07}
         elevation: 15
         halign: "center"
@@ -247,7 +247,7 @@ WindowManager:
     MDLabel:
         id: lang_label
         markup: True
-        font_size: app.p_x * 60
+        font_size: app.resolution_coefficient * 60
         theme_text_color: 'Custom'
         text_color: 0, .47, .42, 1
         text: '[font=Consolas]Language:[/font]'
@@ -256,7 +256,7 @@ WindowManager:
     MDLabel:
         id: rus_lang_label
         markup: True
-        font_size: app.p_x * 54
+        font_size: app.resolution_coefficient * 54
         theme_text_color: 'Custom'
         text_color: 0, .47, .42, 1
         pos_hint: {'center_x': 0.55, 'center_y': 0.85}
@@ -265,10 +265,10 @@ WindowManager:
     MDLabel:
         id: eng_lang_label
         markup: True
-        font_size: app.p_x * 54
+        font_size: app.resolution_coefficient * 54
         theme_text_color: 'Custom'
         text_color: 0, .47, .42, 1
-        pos_hint: {'center_x': 0.55, 'center_y': 0.75}
+        pos_hint: {'center_x': 0.55, 'center_y': 0.72}
         text: '[font=IBM Plex Sans]English[/font]'
 
     Amazing_Button:
@@ -276,7 +276,7 @@ WindowManager:
         icon: 'checkbox-blank-circle-outline'
         theme_text_color: 'Custom'
         text_color: app.theme_cls.primary_color
-        user_font_size: app.p_x * 60
+        user_font_size: app.resolution_coefficient * 50
         pos_hint: {'center_x': 0.77, 'center_y': 0.85}
         on_release: root.russian_language()
 
@@ -285,8 +285,8 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: app.theme_cls.primary_color
-        user_font_size: app.p_x * 60
-        pos_hint: {'center_x': 0.77, 'center_y': 0.75}
+        user_font_size: app.resolution_coefficient * 50
+        pos_hint: {'center_x': 0.77, 'center_y': 0.72}
         on_release: root.english_language()
 
     MDRoundFlatIconButton:
@@ -294,7 +294,7 @@ WindowManager:
         text_color: 0, .47, .42, 1
         line_color: 0, .47, .42, 1
         icon_color: 0, .47, .42, 1
-        font_size: app.p_x * 40
+        font_size: app.resolution_coefficient * 40
         pos_hint: {'center_x': 0.5, 'center_y': 0.07}
         elevation: 15
         halign: "center"
@@ -307,7 +307,7 @@ WindowManager:
     MDLabel:
         id: theme_label
         markup: True
-        font_size: app.p_x * 54
+        font_size: app.resolution_coefficient * 54
         theme_text_color: 'Custom'
         text_color: 0, .47, .42, 1
         pos_hint: {'center_x': 0.55, 'center_y': 0.6}
@@ -323,7 +323,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .85, .2, .1, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_reddish_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -334,7 +334,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .93, .54, .04, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_orange_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -345,7 +345,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .93, .81, .02, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_yellowish_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -356,7 +356,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .02, .9, .18, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_greenish_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -367,7 +367,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: 0, .47, .42, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_malachite_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -378,7 +378,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .57, .02, .72, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_purple_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -390,7 +390,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .7, .65, .82, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_space_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -401,7 +401,7 @@ WindowManager:
         icon: 'checkbox-blank-circle'
         theme_text_color: 'Custom'
         text_color: .02, .31, .79, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_dark_blue_accent()
             Snackbar(text="[color=#ddbb34]New accent has been set![/color]").open()
@@ -416,7 +416,7 @@ WindowManager:
         icon: 'white-balance-sunny'
         theme_text_color: 'Custom'
         text_color: .95, .89, .47, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_light_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -427,7 +427,7 @@ WindowManager:
         icon: 'moon-waning-crescent'
         theme_text_color: 'Custom'
         text_color: .95, .89, .47, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_dark_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -438,7 +438,7 @@ WindowManager:
         icon: 'invert-colors'
         theme_text_color: 'Custom'
         text_color: .8, .53, .15, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_gradient_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -449,7 +449,7 @@ WindowManager:
         icon: 'square'
         theme_text_color: 'Custom'
         text_color: .78, .07, .17, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_ruby_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -461,7 +461,7 @@ WindowManager:
         icon: 'square'
         theme_text_color: 'Custom'
         text_color: .81, .24, .35, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_raspberry_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -472,7 +472,7 @@ WindowManager:
         icon: 'square'
         theme_text_color: 'Custom'
         text_color: .55, .13, .71, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_purple_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -483,7 +483,7 @@ WindowManager:
         icon: 'square'
         theme_text_color: 'Custom'
         text_color: 0, .69, .71, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_sky_blue_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -494,7 +494,7 @@ WindowManager:
         icon: 'square'
         theme_text_color: 'Custom'
         text_color: .02, .26, .67, 1
-        user_font_size: app.p_x * 54
+        user_font_size: app.resolution_coefficient * 48
         on_release:
             root.set_dark_blue_bg()
             Snackbar(text="[color=#ddbb34]New background has been set![/color]").open()
@@ -524,7 +524,7 @@ WindowManager:
         MDLabel:
             id: support_card_label1
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]"The Best Solver of quadratics",[/font]'
@@ -532,7 +532,7 @@ WindowManager:
         MDLabel:
             id: support_card_label2
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]although being the best, is still absolutely free and contains no advertisements.[/font]'
@@ -540,7 +540,7 @@ WindowManager:
         MDLabel:
             id: support_card_label3
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]Consequently,[/font]'
@@ -548,7 +548,7 @@ WindowManager:
         MDLabel:
             id: support_card_label4
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]I\'d like to ask you to support the project.[/font]'
@@ -556,7 +556,7 @@ WindowManager:
         MDLabel:
             id: support_card_label5
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]It is up to you: how exactly you support this app.[/font]'
@@ -564,7 +564,7 @@ WindowManager:
         MDLabel:
             id: support_card_label6
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]There are several ways to do it,[/font]'
@@ -572,7 +572,7 @@ WindowManager:
         MDLabel:
             id: support_card_label7
             markup: True
-            font_size: app.p_x * 22
+            font_size: app.resolution_coefficient * 22
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]all of them are equally good, and there is no shame in combing them.[/font]'
@@ -581,7 +581,7 @@ WindowManager:
         id: support_card_label8
         pos_hint: {'center_x': .51, 'center_y': .33}
         markup: True
-        font_size: app.p_x * 18
+        font_size: app.resolution_coefficient * 18
         theme_text_color: 'Custom'
         text_color: 0, .61, .55, 1
         text: '[font=Consolas]The first way - assist financially:[/font]'
@@ -590,7 +590,7 @@ WindowManager:
         id: support_card_label9
         pos_hint: {'center_x': .51, 'center_y': .28}
         markup: True
-        font_size: app.p_x * 18
+        font_size: app.resolution_coefficient * 18
         theme_text_color: 'Custom'
         text_color: 0, .61, .55, 1
         text: '[font=Consolas]4441-1144-2615-3555 (Visa)[/font]'
@@ -599,7 +599,7 @@ WindowManager:
         id: support_card_label10
         pos_hint: {'center_x': .51, 'center_y': .22}
         markup: True
-        font_size: app.p_x * 18
+        font_size: app.resolution_coefficient * 18
         theme_text_color: 'Custom'
         text_color: 0, .61, .55, 1
         text: '[font=Consolas]The second way - tell your friends about it[/font]'
@@ -608,7 +608,7 @@ WindowManager:
         id: support_card_label11
         pos_hint: {'center_x': .51, 'center_y': .17}
         markup: True
-        font_size: app.p_x * 18
+        font_size: app.resolution_coefficient * 18
         theme_text_color: 'Custom'
         text_color: 0, .61, .55, 1
         text: '[font=Consolas]The third way - set 5* in Play Market[/font]'
@@ -619,7 +619,7 @@ WindowManager:
         icon: 'content-copy'
         theme_text_color: 'Custom'
         text_color: 0, .61, .55, 1
-        user_font_size: app.p_x * 44
+        user_font_size: app.resolution_coefficient * 44
         on_release:
             self.text = Clipboard.paste()
             Clipboard.copy('4441114426153555')
@@ -630,7 +630,7 @@ WindowManager:
         text_color: 0, .61, .55, 1
         line_color: 0, .61, .55, 1
         icon_color: 0, .61, .55, 1
-        font_size: app.p_x * 40
+        font_size: app.resolution_coefficient * 40
         pos_hint: {'center_x': 0.5, 'center_y': 0.07}
         elevation: 15
         halign: "center"
@@ -666,7 +666,7 @@ WindowManager:
         MDLabel:
             id: help_card_label1
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]Don\'t know how to use the app?[/font]'
@@ -674,7 +674,7 @@ WindowManager:
         MDLabel:
             id: help_card_label2
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]No problem, that\'s not complicated at all![/font]'
@@ -682,7 +682,7 @@ WindowManager:
         MDLabel:
             id: help_card_label3
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]1) Click \"Equation-Solver\" button.[/font]'
@@ -690,7 +690,7 @@ WindowManager:
         MDLabel:
             id: help_card_label4
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]2) Enter a quadratic equation belonging to one of the following types:[/font]'
@@ -698,7 +698,7 @@ WindowManager:
         MDLabel:
             id: help_card_label5
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]3) ax²=0; ax²+c=0; ax²+bx=0; ax²+bx+c=0.[/font]'
@@ -706,7 +706,7 @@ WindowManager:
         MDLabel:
             id: help_card_label6
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]4) Position of coefficients doesn\'t matter.[/font]'
@@ -714,7 +714,7 @@ WindowManager:
         MDLabel:
             id: help_card_label7
             markup: True
-            font_size: app.p_x * 20
+            font_size: app.resolution_coefficient * 20
             theme_text_color: 'Custom'
             text_color: 0, .61, .55, 1
             text: '[font=Consolas]5) Keep in mind that an equation should contain at least one variable (f.e. x, y, t, etc.) and only one "²".[/font]'
@@ -723,14 +723,14 @@ WindowManager:
         id: help_label8
         pos_hint: {'center_x': .55, 'center_y': .3}
         markup: True
-        font_size: app.p_x * 55
+        font_size: app.resolution_coefficient * 55
         theme_text_color: 'Custom'
         text_color: 0, .61, .55, 1
         text: '[font=IBM Plex Sans]Enjoy![/font]'
 
     MDRoundFlatIconButton:
         id: home_button_help_screen
-        font_size: app.p_x * 40
+        font_size: app.resolution_coefficient * 40
         pos_hint: {'center_x': 0.5, 'center_y': 0.07}
         elevation: 15
         halign: "center"
