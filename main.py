@@ -1033,7 +1033,7 @@ Interface = 'new_gui.kv'
 class QES(MDApp):
 
     have_been_popped = None
-    # resolution coefficient: Area of CURRENT device's screen / Area of INITIAL device's screen
+    # resolution coefficient: width of CURRENT device's screen / width of INITIAL device's screen
     resolution_coefficient = Window.width / 450
     @staticmethod
     def close_application(obj):
