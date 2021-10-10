@@ -1013,7 +1013,7 @@ class SettingsScreen(MDScreen):
 
     def set_dark_blue_bg(self):
         for bg in self.backgrounds:
-            bg.source = 'Darkblue_theme.png'
+            bg.source = 'DarkBlue_theme.png'
         for card in self.cards:
             card.md_bg_color = 0, .08, .67, 1
 
@@ -1033,7 +1033,7 @@ Interface = 'new_gui.kv'
 class QES(MDApp):
 
     have_been_popped = None
-    # resolution coefficient: Area of CURRENT device's screen / Area of INITIAL device's screen
+    # resolution coefficient: width of CURRENT device's screen / width of INITIAL device's screen
     resolution_coefficient = Window.width / 450
     @staticmethod
     def close_application(obj):
