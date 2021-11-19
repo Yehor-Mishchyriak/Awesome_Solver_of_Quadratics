@@ -1,4 +1,4 @@
-# The-Best-SQ_mobile
+# AWESOME SOLVER OF QUADRATICS
 # VERSION - 1.0
 The latest, cutting-edge version of The Awesome Solver of Quadratics - ready for release on smartphones!
 
