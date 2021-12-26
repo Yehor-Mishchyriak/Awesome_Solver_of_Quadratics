@@ -6,4 +6,11 @@ Description: The Awesome SQ - is 100% free to use application for mathemathics, 
 
 What's next? I intend to transform this project into something larger and more useful for wider range of people. Soon I'll add graph generation there and solving of quadratic inequations.
 
-![Coeffs and vars](https://user-images.githubusercontent.com/89663891/147412412-712f3771-adfe-425d-ba85-f5ced6304d35.png)
+# You can find the published app following this link (https://play.google.com/store/apps/details?id=org.ymsoft.awesomesq) or the QR-code below:
+![QR-code (ASQ)](https://user-images.githubusercontent.com/89663891/147412426-95dacc81-57b3-4f09-8ecd-159bdc8459e7.jpg)
+# Screenshots
+![Envelope1](https://user-images.githubusercontent.com/89663891/147412476-8b920b34-df17-4d37-91b0-bdd773ab0cd3.png)
+![Main Screen](https://user-images.githubusercontent.com/89663891/147412466-7f7b0285-907b-41ff-a445-c1baa35c3859.png)
+![Solution Screen](https://user-images.githubusercontent.com/89663891/147412469-1224883d-d9b7-452a-92b9-edc0704b19e0.png)
+![Coeffs and vars](https://user-images.githubusercontent.com/89663891/147412471-af291d72-a42e-4f37-bb30-bb4b4dddf374.png)
+![Customization showoff](https://user-images.githubusercontent.com/89663891/147412473-f774cf97-0e59-4e92-b152-3638c2440143.png)
